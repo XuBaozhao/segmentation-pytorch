@@ -111,9 +111,10 @@ class RssraiTestOneImage():
         self.images["horizontal"] = self.horizontal(self.images["origin"])
 
     def get_slide_dataSet(self, image):
-        for multiple in [1, 2, 4]:
+        for multiple in [1]:
             size = 256 * multiple
-            stride = size / 2
+            stride = size / 4
+            # stride = size
             rssraiSet = RssraiTest(image, size, stride)
             yield DataLoader(rssraiSet, batch_size=self.batch_size,
                              shuffle=False,
@@ -190,7 +191,7 @@ class RssraiTestOneImage():
         del sample["y2"]
         del sample["image"]
         gc.collect()
-        time.sleep(10)
+        # time.sleep(3)
 
     def vertical(self, image):
         return A.VerticalFlip(p=1)(image=image)['image']

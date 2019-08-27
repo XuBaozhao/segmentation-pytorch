@@ -45,6 +45,7 @@ class Tester():
         self.model.eval()
 
         typeList = ["origin", "vertical", "horizontal"]
+        typeList = ["origin"]
         for type in typeList:
             for dateLoader in rssraiImage.get_slide_dataSet(rssraiImage.images[type]):
                 tbar = tqdm(dateLoader)
@@ -77,7 +78,7 @@ if __name__ == "__main__":
     args.model = 'FCN'
     args.backbone = 'resnet50'
     args.check_point_id = 1
-    args.batch_size = 70
+    args.batch_size = 200
 
     print(args)
     tester = Tester()
@@ -89,6 +90,6 @@ if __name__ == "__main__":
     _img_path_list = glob(os.path.join(image_dir, '*.tif'))
     img_name_list = [name.split('/')[-1] for name in _img_path_list]
     pprint(img_name_list)
-    for name in img_name_list:
-        print(name)
+    for index,name in enumerate(img_name_list):
+        print(f"{index:name}")
         tester.test(name, image_dir, save_dir)
