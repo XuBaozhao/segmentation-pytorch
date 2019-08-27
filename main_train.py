@@ -196,7 +196,7 @@ if __name__ == "__main__":
     args.base_size = 256
     args.crop_size = 256
     args.optim = "SGD"
-    args.apex = 0
+    args.apex = 2
     args.epochs = 1000
     args.lr = 0.01
 
